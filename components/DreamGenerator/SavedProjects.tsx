@@ -41,17 +41,21 @@ export default function SavedProjects() {
   }, []);
 
   if (projects.length === 0) {
-    return <p className="text-white mt-6">No saved projects found.</p>;
+    return (
+      <p className="text-white mt-6">No previously generated projects found.</p>
+    );
   }
 
   return (
     <div className="mt-12">
-      <h2 className="text-2xl font-bold text-white mb-4">Saved Projects</h2>
+      <h2 className="text-2xl font-bold text-white mb-4">
+        Previously Generated Projects
+      </h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <Link
             href={`/project/${project.id}`}
-            key={project.id}
+            key={index}
             className="block bg-white/5 border border-white/10 p-4 rounded-lg hover:bg-white/10 transition"
           >
             <h3 className="text-xl font-semibold text-purple-300 mb-2">
