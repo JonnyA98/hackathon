@@ -11,6 +11,7 @@ import { SuggestionTaskCard } from "@/components/DreamGenerator/SuggestionTaskCa
 import { questions } from "@/lib/static/questions";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
+import SavedProjects from "@/components/DreamGenerator/SavedProjects";
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -159,6 +160,7 @@ export default function Home() {
           )}
         </motion.div>
       </div>
+      <SavedProjects />
     </div>
   );
 }
