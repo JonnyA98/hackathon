@@ -1,6 +1,8 @@
 import { Mistral } from "@mistralai/mistralai";
 
-const client = new Mistral({ apiKey: process.env.MISTRAL_API_KEY || "" });
+const client = new Mistral({
+  apiKey: process.env.NEXT_PUBLIC_MISTRAL_API_KEY!,
+});
 /**
  * Call Mistral AI with a single user message string.
  *
