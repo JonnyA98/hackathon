@@ -9,6 +9,8 @@ import { QuestionCard } from "@/components/DreamGenerator/QuestionCard";
 import { SuggestionCard } from "@/components/DreamGenerator/SuggestionCard";
 import { SuggestionTaskCard } from "@/components/DreamGenerator/SuggestionTaskCard";
 import { questions } from "@/lib/static/questions";
+import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -21,6 +23,8 @@ export default function Home() {
     experience: [],
   });
   const [suggestion, setSuggestion] = useState<ProjectSuggestion | null>(null);
+
+  const router = useRouter();
 
   const updateResponse = (key: keyof DreamResponse, value: any) => {
     setResponses((prev) => ({
@@ -39,6 +43,8 @@ export default function Home() {
   };
 
   const generateSuggestion = () => {
+    const id = uuidv4(); // or generate a slug if you prefer
+
     const suggestion: ProjectSuggestion = {
       title: "ImpactHub",
       description: `A platform that combines ${
@@ -89,7 +95,12 @@ export default function Home() {
         },
       ],
     };
-    setSuggestion(suggestion);
+
+    localStorage.setItem(
+      `suggestion-${id}`,
+      JSON.stringify({ suggestion, responses })
+    );
+    router.push(`/project/${id}`);
   };
 
   const handleNext = () => {
