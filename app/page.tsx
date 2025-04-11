@@ -12,6 +12,7 @@ import { questions } from "@/lib/static/questions";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import SavedProjects from "@/components/DreamGenerator/SavedProjects";
+import CallAIButtonTemp from "@/components/CallAIButtonTemp";
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -125,6 +126,7 @@ export default function Home() {
               Dream Hackathon Generator
               <Stars className="text-yellow-400" />
             </h1>
+            <CallAIButtonTemp />
             <p className="text-lg text-blue-200">
               Turn your passions into impactful projects
             </p>

@@ -15,3 +15,8 @@ export interface ProjectSuggestion {
     tasks: string[];
   }[];
 }
+
+export type ChatMessage = {
+  role: "user" | "assistant" | "system";
+  content: string;
+};

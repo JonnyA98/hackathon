@@ -15,12 +15,14 @@ export default function HeaderAction() {
   };
 
   return (
-    <button
-      onClick={handleDelete}
-      className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition cursor-pointer"
-    >
-      <TrashIcon className="w-4 h-4 mr-2" />
-      Delete Project
-    </button>
+    <>
+      <button
+        onClick={handleDelete}
+        className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition cursor-pointer"
+      >
+        <TrashIcon className="w-4 h-4 mr-2" />
+        Delete Project
+      </button>
+    </>
   );
 }
