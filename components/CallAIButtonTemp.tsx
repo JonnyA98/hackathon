@@ -1,6 +1,4 @@
 import { callMistralChat } from "@/lib/api/call-mistral";
-import { TrashIcon } from "lucide-react";
-import React from "react";
 
 export default function CallAIButtonTemp() {
   const callMe = async () => {
