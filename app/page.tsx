@@ -13,8 +13,10 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import SavedProjects from "@/components/DreamGenerator/SavedProjects";
 import CallAIButtonTemp from "@/components/CallAIButtonTemp";
+import { AppLoader } from "@/components/AppLoader";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [responses, setResponses] = useState<DreamResponse>({
     passion: "",
@@ -45,6 +47,7 @@ export default function Home() {
   };
 
   const generateSuggestion = () => {
+    setIsLoading(true);
     const id = uuidv4(); // or generate a slug if you prefer
 
     const suggestion: ProjectSuggestion = {
@@ -103,6 +106,7 @@ export default function Home() {
       JSON.stringify({ suggestion, responses })
     );
     router.push(`/project/${id}`);
+    setIsLoading(false);
   };
 
   const handleNext = () => {
@@ -111,6 +115,12 @@ export default function Home() {
     }
     setStep(step + 1);
   };
+
+  if (isLoading) {
+    return (
+      <AppLoader message="Generating your project suggestion..." fullScreen />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 via-blue-900 to-black text-white p-8">
